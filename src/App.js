@@ -50,13 +50,13 @@ function Layout() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to={process.env.PUBLIC_URL + "/"}>Home</Link>
           </li>
           <li>
-            <Link to="/basic">Basic</Link>
+            <Link to={process.env.PUBLIC_URL + "/basic"}>Basic</Link>
           </li>
           <li>
-            <Link to="/practice">Practice</Link>
+            <Link to={process.env.PUBLIC_URL + "/practice"}>Practice</Link>
           </li>
         </ul>
       </nav>
@@ -89,16 +89,18 @@ function Basic() {
       <nav>
         <ul>
           <li>
-            <Link to="/basic">초기화</Link>
+            <Link to={process.env.PUBLIC_URL + "/basic"}>초기화</Link>
           </li>
           <li>
-            <Link to="/basic/cra">CRA</Link>
+            <Link to={process.env.PUBLIC_URL + "/basic/cra"}>CRA</Link>
           </li>
           <li>
-            <Link to="/basic/useeffect">UseEffect</Link>
+            <Link to={process.env.PUBLIC_URL + "/basic/useeffect"}>
+              UseEffect
+            </Link>
           </li>
           <li>
-            <Link to="/basic/cleanup">CleanUp</Link>
+            <Link to={process.env.PUBLIC_URL + "/basic/cleanup"}>CleanUp</Link>
           </li>
         </ul>
       </nav>
@@ -115,16 +117,20 @@ function Practice() {
       <nav>
         <ul>
           <li>
-            <Link to="/practice">초기화</Link>
+            <Link to={process.env.PUBLIC_URL + "/practice"}>초기화</Link>
           </li>
           <li>
-            <Link to="/practice/todolist">TodoList</Link>
+            <Link to={process.env.PUBLIC_URL + "/practice/todolist"}>
+              TodoList
+            </Link>
           </li>
           <li>
-            <Link to="/practice/cointracker">CoinTracker</Link>
+            <Link to={process.env.PUBLIC_URL + "/practice/cointracker"}>
+              CoinTracker
+            </Link>
           </li>
           <li>
-            <Link to="/practice/movie">Movie</Link>
+            <Link to={process.env.PUBLIC_URL + "/practice/movie"}>Movie</Link>
           </li>
         </ul>
       </nav>
