@@ -18,10 +18,10 @@ import Detail from "./Practice/Movie/routes/Detail";
 function App() {
   return (
     <div>
-      <h1>React 기초</h1>
+      <h1>React 기초(예제)</h1>
       <Router>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path={process.env.PUBLIC_URL + "/"} element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="basic" element={<Basic />}>
               <Route path="cra" element={<CRA />} />
