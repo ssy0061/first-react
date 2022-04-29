@@ -136,7 +136,7 @@ function Home() {
       </label>
       {file ? <p>{file.name}</p> : null}
       {imgSrc ? (
-        <img src={imgSrc.result} alt="업로드 파일" />
+        <img src={imgSrc.result} alt="업로드 파일" width="100%" />
       ) : (
         <p>이미지가 없어요</p>
       )}
