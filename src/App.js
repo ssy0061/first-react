@@ -6,7 +6,7 @@ import {
   Outlet,
 } from "react-router-dom";
 
-import { IconButton } from "@mui/material";
+import { IconButton, Button, Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Add } from "@mui/icons-material";
 
@@ -19,6 +19,7 @@ import CoinTracker from "./Practice/CoinTracker";
 
 import Movies from "./Practice/Movie/routes/Home";
 import Detail from "./Practice/Movie/routes/Detail";
+import { useState } from "react";
 
 const Input = styled("input")({
   display: "none",
@@ -26,7 +27,7 @@ const Input = styled("input")({
 
 function App() {
   return (
-    <div>
+    <Container maxWidth="md">
       <h1>React 기초(예제)</h1>
       <Router>
         <Routes>
@@ -46,7 +47,7 @@ function App() {
           </Route>
         </Routes>
       </Router>
-    </div>
+    </Container>
   );
 }
 
@@ -75,6 +76,32 @@ function Layout() {
 }
 
 function Home() {
+  const [imgSrc, setImgSrc] = useState("");
+  const [file, setFile] = useState("");
+  const readImage = (input) => {
+    if (input.files && input.files[0]) {
+      // 이미지 파일인지 검사(생략)
+
+      // FileReader 인스턴스 생성
+      const reader = new FileReader();
+
+      // 이미지가 로드 된 경우
+      reader.onload = (e) => {
+        setImgSrc(e.target);
+      };
+
+      // reader가 이미지 읽도록 하기
+      reader.readAsDataURL(input.files[0]);
+    }
+  };
+  const onChange = (event) => {
+    setFile(event.target.files[0]);
+    readImage(event.target);
+  };
+  const onClick = () => {
+    setFile("");
+    setImgSrc("");
+  };
   return (
     <div>
       <h2>Home</h2>
@@ -87,9 +114,18 @@ function Home() {
           React Router Basic Example 참고
         </a>
       </p>
-
+      <br />
+      <h3>업로드 이미지 미리보기</h3>
+      <Button variant="contained" onClick={onClick}>
+        초기화
+      </Button>
       <label htmlFor="icon-button-file">
-        <Input accept="image/*" id="icon-button-file" type="file" />
+        <Input
+          onChange={onChange}
+          accept="image/*"
+          id="icon-button-file"
+          type="file"
+        />
         <IconButton
           color="primary"
           aria-label="upload picture"
@@ -98,6 +134,12 @@ function Home() {
           <Add />
         </IconButton>
       </label>
+      {file ? <p>{file.name}</p> : null}
+      {imgSrc ? (
+        <img src={imgSrc.result} alt="업로드 파일" />
+      ) : (
+        <p>이미지가 없어요</p>
+      )}
     </div>
   );
 }
