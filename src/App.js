@@ -5,6 +5,11 @@ import {
   Link,
   Outlet,
 } from "react-router-dom";
+
+import { IconButton } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { Add } from "@mui/icons-material";
+
 import CRA from "./BasicsOfReact/CRA/CRA";
 import UseEffect from "./BasicsOfReact/UseEffect";
 import CleanUp from "./BasicsOfReact/CleanUp";
@@ -14,6 +19,10 @@ import CoinTracker from "./Practice/CoinTracker";
 
 import Movies from "./Practice/Movie/routes/Home";
 import Detail from "./Practice/Movie/routes/Detail";
+
+const Input = styled("input")({
+  display: "none",
+});
 
 function App() {
   return (
@@ -39,7 +48,6 @@ function App() {
       </Router>
     </div>
   );
-  return;
 }
 
 export default App;
@@ -74,10 +82,22 @@ function Home() {
         <a
           href="https://reactrouter.com/docs/en/v6/examples/basic"
           target="_blank"
+          rel="noreferrer"
         >
           React Router Basic Example 참고
         </a>
       </p>
+
+      <label htmlFor="icon-button-file">
+        <Input accept="image/*" id="icon-button-file" type="file" />
+        <IconButton
+          color="primary"
+          aria-label="upload picture"
+          component="span"
+        >
+          <Add />
+        </IconButton>
+      </label>
     </div>
   );
 }
