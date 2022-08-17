@@ -78,6 +78,7 @@ function Layout() {
 function Home() {
   const [imgSrc, setImgSrc] = useState("");
   const [file, setFile] = useState("");
+  // const [imgFiles, setImgFiles] = useState();
   const readImage = (input) => {
     if (input.files && input.files[0]) {
       // 이미지 파일인지 검사(생략)
@@ -101,6 +102,20 @@ function Home() {
   const onClick = () => {
     setFile("");
     setImgSrc("");
+  };
+  const onClick2 = () => {
+    // setImgFiles("");
+    const output = document.getElementById("imgs");
+    output.innerHTML = "";
+  };
+  const onChange2 = (event) => {
+    // setImgFiles(event.target.files);
+    const files = event.target.files;
+    const output = document.getElementById("imgs");
+    for (const file of files) {
+      const date = new Date(file.lastModified);
+      output.innerHTML += `<p>${file.name} :: ${date}</p>`;
+    }
   };
   return (
     <div>
@@ -140,6 +155,28 @@ function Home() {
       ) : (
         <p>이미지가 없어요</p>
       )}
+      <br />
+      <h3>업로드 이미지들 수정(생성)시간 확인하기</h3>
+      <Button variant="contained" onClick={onClick2}>
+        초기화
+      </Button>
+      <label htmlFor="icon-button-file2">
+        <Input
+          onChange={onChange2}
+          accept="image/*"
+          id="icon-button-file2"
+          type="file"
+          multiple
+        />
+        <IconButton
+          color="primary"
+          aria-label="upload picture"
+          component="span"
+        >
+          <Add />
+        </IconButton>
+      </label>
+      <div id="imgs"></div>
     </div>
   );
 }
