@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.69a89e36.css","mappings":"AAAA,oBAEE,uBAAwB,CADxB,UAEF","sources":["BasicsOfReact/CRA/Button.module.css"],"sourcesContent":[".btn {\r\n  color: white;\r\n  background-color: tomato;\r\n}\r\n"],"names":[],"sourceRoot":""}
